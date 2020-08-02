@@ -1,5 +1,4 @@
 .idea/
-main.zip
 gcptest*.json
 .gcloudignore
 .DS_Store

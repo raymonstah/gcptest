@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"google.golang.org/api/option"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"net/http"
@@ -17,7 +16,9 @@ var namesCollection *firestore.CollectionRef
 
 func init() {
 	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, "gcptest-285205", option.WithCredentialsFile("gcptest-285205-62e9aabf356b.json"))
+
+	// client looks for an ENV variable: GOOGLE_APPLICATION_CREDENTIALS
+	client, err := firestore.NewClient(ctx, "gcptest-285205")
 	if err != nil {
 		panic(fmt.Errorf("error creating new client: %w", err))
 	}
